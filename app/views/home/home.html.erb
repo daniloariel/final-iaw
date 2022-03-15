@@ -1,0 +1,46 @@
+<h1></h1>
+
+<% if current_user %>
+    <h1> Hola <%= current_user.name %> <%= current_user.lastname %>!</h1>
+    <p> You are a [<%= current_user.role %>]</p>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    
+    <% if current_user.medico? %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @pacientes.each do |paciente| %>
+                    <tr>
+                        <td><button type="button" class="btn btn-link"><%=paciente.name%> <%=paciente.lastname%></button></td>
+                        <td><%=paciente.email%></td>
+                        <td><%=paciente.dob%></td>
+                        
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+    <% end %>
+
+    <% if current_user.paciente? %>
+
+        <button type="button" class="btn btn-link">Historial</button>
+
+        <button type="button" class="btn btn-link">Continuar registro</button>
+
+        <button type="button" class="btn btn-link">Nuevo registro</button>
+
+    
+    <% end %>
+
+
+<% else %>
+    <p> No estás logeado </p>
+    <%= link_to "Login", new_user_session_path %>
+<% end %>

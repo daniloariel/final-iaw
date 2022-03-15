@@ -1,0 +1,32 @@
+<% if current_user %>
+<h1>Paciente: <%=@paciente.name%> <%=@paciente.lastname%></h1>
+<p>Edad: <%=@age%> </p>
+
+<!--Acá si sos médico tenes que ver las cosas del paciente y si sos paciente tenes que ver tus propias cosas-->
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Horario Mañana</th>
+                    <th scope="col">Resultado</th>
+                    <th scope="col">Horario Tarde</th>
+                    <th scope="col">Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @studies.each do |study| %>
+                    <tr>
+                        <td>fecha</td>
+                        <td>todavia no</td>
+                        <td><%=study.first_time%></td>
+                        <td>todavia no</td>
+                        <td><%=study.second_time%></td>                        
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+    
+
+<%end%>
