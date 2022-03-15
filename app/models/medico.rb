@@ -1,2 +1,0 @@
-class Medico < ApplicationRecord
-end

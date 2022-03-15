@@ -1,3 +1,0 @@
-class Mdpa < ApplicationRecord
-    
-end
